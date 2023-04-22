@@ -4,8 +4,8 @@ require('./models/db');
 const userRouter = require('./routes/user');
 const lecturasSchema = require("./models/lecturas")
 const sensorSchema = require('./models/sensores');
+const loginSchema = require('./models/login');
 
-const User = require('./models/user');
 
 const app = express();
 app.use(express.json());
@@ -86,6 +86,21 @@ app.post('/lectura', (req, res)=>{
   })
 });
 
-app.listen(8000,'192.168.1.73', () => {
+
+
+app.get('/login', async (req, res) => {
+  try {
+    const login = await loginSchema.findOne().sort({ "login.fecha": -1, "login.hora": -1 });
+
+    res.status(200).send({
+      datos: login
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+
+app.listen(8000,'192.168.1.71', () => {
   console.log('port is listening');
 });

@@ -3,12 +3,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 // import HomeScreen from '../screens/Homescreen';
 import LoginScreen from '../screens/Loginsecreen';
+import Tarjeta from '../screens/Tarjeta';
 import SplashScreen from '../screens/SplashScreen';
 import RegisterScreen from '../screens/Registersecreen';
 import { AuthContext } from '../context/AuthContext.js';
 import BottomTab from '../navigation/BottomTab';
 const Stack = createNativeStackNavigator();
-
 const Navigation = () => {
   const {userInfo, splashLoading} = useContext(AuthContext);
   return (
@@ -24,6 +24,11 @@ const Navigation = () => {
           <Stack.Screen name="Aplicacion sensores" component={BottomTab} />
           ) : (
             <>
+            <Stack.Screen
+            name="Tarjeta"
+            component={Tarjeta}
+            options={{headerShown: false}}/>
+
             <Stack.Screen
               name="Login"
               component={LoginScreen}

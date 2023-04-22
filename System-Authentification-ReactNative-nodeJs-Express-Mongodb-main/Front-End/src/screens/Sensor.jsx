@@ -18,7 +18,7 @@ const Sensor = () => {
   };
 
   const handleSubmit = async () => {
-    await axios.post('http://192.168.1.73:8000/sensor', datos)
+    await axios.post('http://192.168.1.71:8000/sensor', datos)
     .then(function (response){
       if(response.status === 200) {
         setDatos(initialState);

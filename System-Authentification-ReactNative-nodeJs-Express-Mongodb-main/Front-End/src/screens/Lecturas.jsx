@@ -17,7 +17,7 @@ const Lecturas = () => {
   }, []);
   
   const traerSensores = async () => {
-    await axios.get('http://192.168.1.73:8000/sensores')
+    await axios.get('http://192.168.1.71:8000/sensores')
     .then(function (response){
       if(response.status === 200) {
         setSensores(response.data.datos)
@@ -29,7 +29,7 @@ const Lecturas = () => {
   };
   const traerLecturas = async (sensorId) =>{
     setNumber(sensorId);
-    await axios.get(`http://192.168.1.73:8000/lecturas/${sensorId}`)
+    await axios.get(`http://192.168.1.71:8000/lecturas/${sensorId}`)
     .then(function (response){
       if(response.status === 200) {
         setSensores(response.data.datos)
